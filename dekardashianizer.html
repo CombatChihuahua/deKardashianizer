@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html style="background-color:#bbbbbb">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Welcome to the DeKardashianizer!</title>
+    <style>
+      body {
+        min-width: 340px;
+        overflow-x: hidden;
+        height: 235px;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+  </head>
+  <body>
+    <div style="width:334px; height: 55px; padding:4px; background-color: #222222;">
+      <div style="float:left; vertical-align:top">
+        <img src="dk-on-128.png" width=56 height=56 style="vertical-align:top">
+      </div>
+      <div style="margin-left: 68px; color: #FAAE0E" >
+        <b>Welcome to the DeKardashianizer!</b><br />
+        <small><i>Reducing the number of things you need to keep up with on HuffPo!</i></small>
+      </div>
+    </div>
+    <div style="width:340px; border-style:solid; border-width:1px; background-color: #eeeeee; border-color: #222222">
+      <form id="dkform" action="" method="">
+        <ul style="list-style-type: none; padding-left:20px; margin-bottom:4px">
+          <li><label><input type="checkbox" id="dkcb" name="dk" /> <span style="position:relative; top:3px;">DeKardashianize?</span></label></li>
+          <li style="padding-top:10px; padding-bottom:5px"><label>Keyworks to scan for<br /><small>(separated by commas)</small></label></li>
+          <li><textarea id="kw" name="kw" style="width:298px; height:47px" /></textarea></li>
+        </ul>
+      </form>
+    </div>
+    <div style="width:342px; height:20px; background-color: #222222; color=#FAAE0E;">
+      <small style="color:#FAAE0E; padding-left:10px">&copy;2014 Combat Chihuaha</small>
+    </div>
+    <script src="settings.js"></script>
+  </body>
+</html>

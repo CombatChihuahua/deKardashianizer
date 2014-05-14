@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "DeKardashianizer",
+  "description": "This extension removes Kardashian-related content from HuffingtonPost.",
+  "version": "0.1",
+  "icons": { "128": "dk-on-128.png" },
+    
+  "permissions": [
+    "http://*.huffingtonpost.com/*",
+    "tabs",
+    "storage"
+  ],
+ 
+  "background": {
+    "scripts": ["jquery.min.js","dkbg.js"],
+    "persistent": false
+  },
+
+  "page_action": {
+    "default_title": "The DeKardashianizer",
+    "default_icon": "dk-on-32.png",
+    "default_popup": "dekardashianizer.html"
+  }
+}
