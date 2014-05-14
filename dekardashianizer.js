@@ -1,6 +1,7 @@
 /* The deKardashianier
  * This is the code that does all the work on HuffingtonPost pages to remove things you might not want to keep up with
- * Some of the logic can easily be used on other sites but there are some HuffPo-specific items. These are spelled out in the code.
+ * Most of the logic could be used on other sites with changes to the element names
+ * Of course changes to the HuffPo site could break some or all of the patterns I've coded to
  *
  * Description of patterns in HuffPo pages:
  *
@@ -19,6 +20,9 @@
  * td                                       div
  * article                                  article
  * div.entry                                h4.subhead
+ *
+ * Most things are well contained except for that last one where a subhead containing links to other articles
+ * is stuffed into the bottom of a div.entry
  */
 
 console.log("dekardashianizer.js");
@@ -37,10 +41,6 @@ $.fn.nuke = function(){ // extend jQuery with a function that removes offending 
   // Right here would be a good place to update the counter on the page action icon
   this.remove();
   //this.css("background-color","red"); // wonderful for debugging as an alternative to .remove()
-}
-
-function isIn(element, index, array){ // checks if any elements of an array are present in a string (this). No longer used.
-  return this.toLowerCase().indexOf(element.toLowerCase()) >= 0; // returning true short circuits further evaluations.
 }
 
 function scanner(element, index, array){
@@ -66,8 +66,8 @@ function scanner(element, index, array){
   return;
 }
 
-chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) { // this listener is required to get the Keywords over from localStorage in the context of the popup and background script
-  console.log("Received keywords from background script."); 
+chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) { // this listener is required to get the Keywords over from 
+  console.log("Received keywords from background script.");                     // localStorage in the context of the popup and background script 
   Keywords = request.Keywords;
   console.log(Keywords);
   if ( typeof(Keywords)=="object" && Keywords.length>0 ){
