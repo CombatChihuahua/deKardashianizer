@@ -14,11 +14,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
   kw.addEventListener("keyup", function(){ // we save on keyup here since we're not guaranteed to get a change event on a textarea
     console.log("Keywords changed to"+kw.value);
-    Keywords = kw.value.split(",");
+    Keywords = kw.value.split(","); // this converts the string in the textarea back to a matrix
     for (var j=0; j<Keywords.length; j++){ // trim the user's inputs
       Keywords[j]=Keywords[j].trim();
     }
-    console.log(typeof(Keywords));
     localStorage["dekardashianizer_keywords"]=JSON.stringify(Keywords);
   });
 });
