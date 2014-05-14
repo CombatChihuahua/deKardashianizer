@@ -5,11 +5,15 @@
     <title>Welcome to the DeKardashianizer!</title>
     <style>
       body {
+        font-family: Helvetica, Arial, sans-serif;
         min-width: 340px;
         overflow-x: hidden;
-        height: 235px;
-        font-family: Helvetica, Arial, sans-serif;
+        height: 212px;
       }
+      a:link {color:#FAAE0E;}
+      a:visited {color:#FAAE0E;}
+      a:hover {color:#FAAE0E;}
+      a:active {color:#FAAE0E;}
     </style>
 
     <!--
@@ -33,13 +37,14 @@
       <form id="dkform" action="" method="">
         <ul style="list-style-type: none; padding-left:20px; margin-bottom:4px">
           <li><label><input type="checkbox" id="dkcb" name="dk" /> <span style="position:relative; top:3px;">DeKardashianize?</span></label></li>
-          <li style="padding-top:10px; padding-bottom:5px"><label>Keyworks to scan for<br /><small>(separated by commas)</small></label></li>
+          <li style="padding-top:10px; padding-bottom:5px"><label>Keyworks to scan for<small>(separated by commas)</small></label></li>
           <li><textarea id="kw" name="kw" style="width:298px; height:47px" /></textarea></li>
         </ul>
       </form>
     </div>
     <div style="width:342px; height:20px; background-color: #222222; color=#FAAE0E;">
-      <small style="color:#FAAE0E; padding-left:10px">&copy;2014 Combat Chihuaha &nbsp; <a href="https://github.com/CombatChihuahua/deKardashianizer">Source on GitHub</a></small>
+      <small style="color:#FAAE0E; padding-left:10px">&copy;2014 Combat Chihuaha &nbsp;
+        <a href="https://github.com/CombatChihuahua/deKardashianizer" target=_new>Source on GitHub</a></small>
     </div>
     <script src="settings.js"></script>
   </body>
