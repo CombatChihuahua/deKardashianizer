@@ -30,6 +30,12 @@ console.log("dekardashianizer.js");
 var Kards = 0; // How many things we remove. Will be an overestimate since there could be multiple elements with a common ancestor
 var Keywords=[]; // initialize here to establish scope
 
+$('body').keyup( function(e){ // Extra goodie, bind ESC key to jQuery('div.qr_close_a').trigger('click') to close any open lightbox
+  if (e.keyCode==27){         // This has nothing to do with deKardashinizing but it's a feature that HuffPo needs :)
+    $('div.qr_close_a').trigger('click');
+  }
+});
+
 $.expr[":"].cicontains = $.expr.createPseudo(function(arg) {
   return function( elem ) {
     return $(elem).text().toLowerCase().indexOf(arg.toLowerCase()) >= 0;
