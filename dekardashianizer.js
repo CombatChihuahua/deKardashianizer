@@ -56,7 +56,7 @@ var HTMLelements = [ // various possible elements that could contain the keyword
 
 var fgtimer = 300000; // 5 minutes between retries when window is visible
 var bgtimer = 60000; // 1 minute between retries when window is not visible (in case it becomes visible)
-var dbg = false; // debugging flag
+var dbg = false; // debug switch
 
 $('body').keyup( function(e){ // Extra goodie, bind ESC key to close any open lightbox
   if (e.keyCode==27){         // This has nothing to do with deKardashinizing but it's a feature that HuffPo needs :)
@@ -72,9 +72,8 @@ $.expr[":"].cicontains = $.expr.createPseudo(function(arg) { // extend jQuery wi
 
 $.fn.nuke = function(){ // extend jQuery with a function that removes offending elements
   Kards += this.length; // increment the removal counter.
-  // Right here would be a good place to update the counter on the page action icon
   if (dbg){
-    if (this.length>0) { console.log(this); }
+    if ( this.length > 0 ){ console.log(this);}
     this.css("background-color","red"); // wonderful for debugging as an alternative to .remove()
   }
   else {
@@ -98,10 +97,10 @@ function scanner(element, index, array){ // the function that actually examines 
   selector = "p"+matchOn; // "around the web" items, these are in paragraphs inside a section
   $('section.around-the-web').find(selector).nuke();
 
-  for (var i = 0; i < HTMLelements.length; i++) {
-    selector = HTMLelements[i]+matchOn;
-    $(selector).nuke(); // select and nuke!
-  }
+  HTMLelements.forEach( function (el,i) {
+    selector = el+matchOn;
+    $(selector).nuke();
+  });
   return;
 }
 
@@ -126,14 +125,11 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) { 
 function deKardashianize(){ // This is just the supervisor function
   if ( !document.webkitHidden ) {
     var startTime = (new Date).getTime();
-    console.log(' DeKardashianizing!');
+    console.log('deKardashianizing!');
     Kards = 0;
     Keywords.forEach(scanner);
     console.log(' Removed '+Kards+' things I didn\'t need to keep up with in '
       +((new Date).getTime()-startTime)/1000+' seconds!'); // eventually want to show a count on the pageAction icon
-
-    // I tried to look at changes to the DOM but HuffPo updates the DOM as often as every 2 seconds, sometimes even faster
-    // That would have been wasteful. HuffPo seems to be expensive in terms of CPU and RAM when visible
     setTimeout( function(){deKardashianize();},fgtimer);
   }
   else {
@@ -141,3 +137,7 @@ function deKardashianize(){ // This is just the supervisor function
   }
 }
 
+/* I tried triggering on changes to the DOM but HuffPo updates the DOM as often as every 2 seconds, sometimes even faster
+ * That would have been wasteful. HuffPo seems to be quite expensive in terms of CPU and RAM when visible
+ * At least it quiesces when invisible
+ */
