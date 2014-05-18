@@ -22,7 +22,7 @@
  * div.entry                                h4.subhead
  *
  * Elements that show up in individual article pages but not in category or home pages (things get messy here)
- * An optimization could be to only do the scans that are necessary on the particular page type
+ * An optimization would be to only do the scans that are necessary on the particular page type
  *
  * span.entrytag                            span.entrytag
  * section.around-the-web                   p
@@ -55,7 +55,7 @@ var HTMLelements = [ // various possible elements that could contain the keyword
 ]; // ORDER MATTERS! We want to delete from small to big to avoid over-eager deletions
 
 var fgtimer = 300000; // 5 minutes between retries when window is visible
-var bgtimer = 60000; // 1 minute between retries when window is not visible (in case it becomes visible)
+var bgtimer =  60000; // 1 minute between retries when window is not visible (in case it becomes visible)
 var dbg = false; // debug switch
 
 $('body').keyup( function(e){ // Extra goodie, bind ESC key to close any open lightbox
@@ -64,7 +64,7 @@ $('body').keyup( function(e){ // Extra goodie, bind ESC key to close any open li
   }
 });
 
-$.expr[":"].cicontains = $.expr.createPseudo(function(arg) { // extend jQuery with a case insensitive contains function
+$.expr[":"].cicontains = $.expr.createPseudo( function(arg) { // extend jQuery with a case insensitive contains function
   return function( elem ) {
     return $(elem).text().toLowerCase().indexOf(arg.toLowerCase()) >= 0;
   };
@@ -137,7 +137,7 @@ function deKardashianize(){ // This is just the supervisor function
   }
 }
 
-/* I tried triggering on changes to the DOM but HuffPo updates the DOM as often as every 2 seconds, sometimes even faster
+/* I tried triggering on changes to the DOM but HuffPo updates the DOM as often as every 2 seconds
  * That would have been wasteful. HuffPo seems to be quite expensive in terms of CPU and RAM when visible
- * At least it quiesces when invisible
+ * At least it quiesces when the tab is not visible
  */
