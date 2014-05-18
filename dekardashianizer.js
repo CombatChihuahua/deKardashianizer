@@ -128,7 +128,7 @@ function deKardashianize(){ // This is just the supervisor function
     console.log('deKardashianizing!');
     Kards = 0;
     Keywords.forEach(scanner);
-    console.log(' Removed '+Kards+' things I didn\'t need to keep up with in '
+    console.log('Removed '+Kards+' things I didn\'t need to keep up with in '
       +((new Date).getTime()-startTime)/1000+' seconds!'); // eventually want to show a count on the pageAction icon
     setTimeout( function(){deKardashianize();},fgtimer);
   }

@@ -3,7 +3,7 @@
 
   "name": "DeKardashianizer",
   "description": "This extension removes Kardashian-related content from HuffingtonPost.",
-  "version": "0.1",
+  "version": "0.1.1",
   "icons": { "128": "dk-on-128.png" },
     
   "permissions": [
